@@ -1,0 +1,56 @@
+<t t-name="report_invoice_willmantech">
+    <t t-call="web.external_layout">
+        <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+        
+        <div class="page">
+            <div class="row">
+                <div class="col-6">
+                    <strong>Factura: </strong><span t-field="doc.name"/><br/>
+                    <strong>Fecha: </strong><span t-field="doc.invoice_date"/>
+                </div>
+            </div>
+            
+            <t t-set="display_discount" t-value="any(l.discount > 0 for l in doc.invoice_line_ids)"/>
+            
+            <table class="table table-sm o_main_table mt-4">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th class="text-end">Cantidad</th>
+                        <th class="text-end">Precio Unitario</th>
+                        <th t-if="display_discount" class="text-end">Desc.%</th>
+                        <th class="text-end">Importe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="doc.invoice_line_ids" t-as="line">
+                        <tr>
+                            <td><span t-field="line.name"/></td>
+                            <td class="text-end"><span t-field="line.quantity"/></td>
+                            <td class="text-end"><span t-field="line.price_unit"/></td>
+                            <td t-if="display_discount" class="text-end">
+                                <span t-field="line.discount"/>
+                            </td>
+                            <td class="text-end"><span t-field="line.price_subtotal"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            
+            <div class="row justify-content-end">
+                <div class="col-4">
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Total Neto</strong></td>
+                            <td class="text-end"><span t-field="doc.amount_total"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-4" style="border-top: 1px solid black;">
+                <p class="small text-muted">WillmanTech S.L. - Sujeto a condiciones generales de venta.</p>
+            </div>
+        </div>
+    </t>
+</t>
