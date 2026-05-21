@@ -30,6 +30,8 @@ Contable: permisos para validar facturas y exportar datos fiscales.
 Comercial: gestión de presupuestos y clientes.
 Políticas: se aplican reglas de complejidad de contraseñas y auditoría de accesos sobre la información sensible.
 
+Debido a que no poseo conocimientos para trabajar con Json, no elaboré el archivo que se pedía, sin embargo, entregué el resto de dependecias como se especifica en la actividad. 
+
 ## 4. Procedimientos de Backup y Restauración
 Para garantizar la sostenibilidad operativa, se deben programar respaldos periódicos:
 
